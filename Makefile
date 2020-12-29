@@ -11,3 +11,10 @@ build_amd64:
 noise:
 	$(GO) build -o bin/${BINARY}-darwin-amd64 ./cmd/${BINARY}
 	YOMO_SOURCE_ADDR=localhost:1883 YOMO_ZIPPER_ADDR=localhost:4242 ./bin/${BINARY}-darwin-amd64
+
+build_cli:
+	$(GO) build -o bin/yomo-mqtt ./cmd/yomo-mqtt
+
+run_example:
+	$(GO) build -o bin/yomo-mqtt ./cmd/yomo-mqtt
+	bin/yomo-mqtt run -f example/app.go -p 1883 -z localhost:9999 -t NOISE

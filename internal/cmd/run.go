@@ -48,7 +48,7 @@ func NewCmdRun() *cobra.Command {
 	cmd.Flags().StringVarP(&opts.Filename, "file-name", "f", "app.go", "Source function file (default is app.go)")
 	cmd.Flags().IntVarP(&opts.Port, "port", "p", 1883, "Port is the port number of MQTT host for Source function (default is 6262)")
 	cmd.Flags().StringVarP(&opts.ZipperAddr, "zipper-addr", "z", "localhost:9999", "Endpoint of ZipperAddr Server (default is localhost:4242)")
-	cmd.Flags().StringVarP(&opts.Topic, "topic", "t", "NOISE", "topic of MQTT (default is NOISE)")
+	cmd.Flags().StringVarP(&opts.Topic, "topic", "t", "NOISE", "Topic of MQTT (default is NOISE)")
 
 	return cmd
 }

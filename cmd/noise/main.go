@@ -6,9 +6,7 @@ import (
 	"fmt"
 	"log"
 
-	yquic "github.com/yomorun/yomo/pkg/quic"
-
-	"github.com/yomorun/yomo-codec-golang/pkg/packetutils"
+	"github.com/yomorun/yomo/pkg/quic"
 
 	"github.com/yomorun/yomo-codec-golang/pkg/codes"
 
@@ -16,7 +14,7 @@ import (
 )
 
 func main() {
-	client, err := yquic.NewClient("localhost:9999")
+	client, err := quic.NewClient("localhost:9999")
 	if err != nil {
 		panic(fmt.Errorf("NewClient error:%s", err.Error()))
 	}
@@ -46,7 +44,7 @@ func main() {
 			data := float32(raw["noise"])
 			proto := codes.NewProtoCodec(0x10)
 			sendingBuf, _ := proto.Marshal(data)
-			log.Printf("sendingBuf=%s\n", packetutils.FormatBytes(sendingBuf))
+			log.Printf("sendingBuf=%#x\n", sendingBuf)
 
 			_, err = stream.Write(sendingBuf)
 		})

@@ -6,7 +6,6 @@ import (
 	"log"
 
 	"github.com/yomorun/yomo-codec-golang/pkg/codes"
-	"github.com/yomorun/yomo-codec-golang/pkg/packetutils"
 )
 
 func Handler(topic string, payload []byte, writer io.Writer) {
@@ -28,7 +27,7 @@ func Handler(topic string, payload []byte, writer io.Writer) {
 	data := float32(raw["noise"])
 	proto := codes.NewProtoCodec(0x10)
 	sendingBuf, _ := proto.Marshal(data)
-	log.Printf("sendingBuf=%s\n", packetutils.FormatBytes(sendingBuf))
+	log.Printf("sendingBuf=%#x\n", sendingBuf)
 
 	_, err = writer.Write(sendingBuf)
 }
