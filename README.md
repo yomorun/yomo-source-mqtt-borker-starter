@@ -122,6 +122,7 @@ func Handler(topic string, payload []byte, writer io.Writer) {
 
 #### 3. run
 ```bash
+go mod init test && go get
 ./yomo-mqtt run -f app.go -p 1883 -z localhost:9999 -t NOISE
 ```
 - -f Source function file (default is app.go)
