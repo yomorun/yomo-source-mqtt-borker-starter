@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/yomorun/yomo-source-mqtt-borker-starter/internal/source"
+	"github.com/yomorun/yomo-source-mqtt-broker-starter/internal/source"
 
 	"github.com/spf13/cobra"
 )

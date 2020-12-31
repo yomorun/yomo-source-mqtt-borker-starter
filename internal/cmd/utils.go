@@ -5,7 +5,7 @@ import (
 	"plugin"
 	"strings"
 
-	"github.com/yomorun/yomo-source-mqtt-borker-starter/internal/source"
+	"github.com/yomorun/yomo-source-mqtt-broker-starter/internal/source"
 )
 
 type baseOptions struct {

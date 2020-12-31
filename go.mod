@@ -1,4 +1,4 @@
-module github.com/yomorun/yomo-source-mqtt-borker-starter
+module github.com/yomorun/yomo-source-mqtt-broker-starter
 
 go 1.15
 

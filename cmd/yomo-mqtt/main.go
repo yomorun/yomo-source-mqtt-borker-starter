@@ -2,7 +2,7 @@ package main
 
 import (
 	"github.com/spf13/cobra"
-	"github.com/yomorun/yomo-source-mqtt-borker-starter/internal/cmd"
+	"github.com/yomorun/yomo-source-mqtt-broker-starter/internal/cmd"
 )
 
 func main() {

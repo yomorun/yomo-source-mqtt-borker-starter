@@ -6,7 +6,7 @@ import (
 	"log"
 	"plugin"
 
-	"github.com/yomorun/yomo-source-mqtt-borker-starter/pkg/starter"
+	"github.com/yomorun/yomo-source-mqtt-broker-starter/pkg/starter"
 	yquic "github.com/yomorun/yomo/pkg/quic"
 )
 

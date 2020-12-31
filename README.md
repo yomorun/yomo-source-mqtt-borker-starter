@@ -11,7 +11,7 @@ This example shows how to use the component reference method to make it easier t
 
 ```bash
 go mod init source
-go get github.com/yomorun/yomo-source-mqtt-borker-starter
+go get github.com/yomorun/yomo-source-mqtt-broker-starter
 ```
 
 #### 2. create app.go 
@@ -29,7 +29,7 @@ import (
 
 	"github.com/yomorun/yomo-codec-golang/pkg/codes"
 
-	"github.com/yomorun/yomo-source-mqtt-borker-starter/pkg/starter"
+	"github.com/yomorun/yomo-source-mqtt-broker-starter/pkg/starter"
 )
 
 func main() {
@@ -45,11 +45,6 @@ func main() {
 
 	starter.NewBrokerSimply("localhost:1883", "NOISE").
 		Run(func(topic string, payload []byte) {
-			defer func() {
-				if err := recover(); err != nil {
-					log.Printf("handle error: %v", err)
-				}
-			}()
 			log.Printf("topic=%v, payload=%v\n", topic, string(payload))
 
 			// get data from MQTT
@@ -101,11 +96,6 @@ import (
 )
 
 func Handler(topic string, payload []byte, writer io.Writer) {
-	defer func() {
-		if err := recover(); err != nil {
-			log.Printf("handle error: %v", err)
-		}
-	}()
 	log.Printf("topic=%v, payload=%v\n", topic, string(payload))
 
 	// get data from MQTT

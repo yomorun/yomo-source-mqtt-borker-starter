@@ -9,11 +9,6 @@ import (
 )
 
 func Handler(topic string, payload []byte, writer io.Writer) {
-	defer func() {
-		if err := recover(); err != nil {
-			log.Printf("handle error: %v", err)
-		}
-	}()
 	log.Printf("topic=%v, payload=%v\n", topic, string(payload))
 
 	// get data from MQTT
