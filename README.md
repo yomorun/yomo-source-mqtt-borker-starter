@@ -1,7 +1,5 @@
-# yomo-source-mqtt-borker-starter
+# yomo-source-mqtt-broker-starter
 Receive MQTT messages and convert them to the YoMo protocol for transmission to Serverless Service.
-
-
 
 ## 🚀 Getting Started
 
@@ -10,12 +8,15 @@ Receive MQTT messages and convert them to the YoMo protocol for transmission to 
 This example shows how to use the component reference method to make it easier to receive MQTT messages using starter and convert them to the YoMo protocol for transmission to the Zipper service.
 
 #### 1. Init Project
+
 ```bash
 go mod init source
 go get github.com/yomorun/yomo-source-mqtt-borker-starter
 ```
+
 #### 2. create app.go 
-```text
+
+```go
 package main
 
 import (
@@ -70,6 +71,7 @@ func main() {
 ```
 
 #### 3. run 
+
 ```bash
 go run app.go
 ```
@@ -79,12 +81,15 @@ go run app.go
 Running the application through the CLI
 
 #### 1. build cli 
+
 ```bash
 make build_cli
 # create cli file: bin/yomo-mqtt
 ```
+
 #### 2. create app.go
-```text
+
+```go
 package main
 
 import (
@@ -121,10 +126,12 @@ func Handler(topic string, payload []byte, writer io.Writer) {
 ```
 
 #### 3. run
+
 ```bash
 go mod init test && go get
 ./yomo-mqtt run -f app.go -p 1883 -z localhost:9999 -t NOISE
 ```
+
 - -f Source function file (default is app.go)
 - -p Port is the port number of MQTT host for Source function (default is 6262)
 - -z Endpoint of ZipperAddr Server (default is localhost:4242)
