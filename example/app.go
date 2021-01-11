@@ -5,7 +5,7 @@ import (
 	"io"
 	"log"
 
-	"github.com/yomorun/yomo-codec-golang/pkg/codes"
+	"github.com/yomorun/y3-codec-golang/pkg/codes"
 )
 
 func Handler(topic string, payload []byte, writer io.Writer) {

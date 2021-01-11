@@ -8,7 +8,7 @@ import (
 
 	"github.com/yomorun/yomo/pkg/quic"
 
-	"github.com/yomorun/yomo-codec-golang/pkg/codes"
+	"github.com/yomorun/y3-codec-golang/pkg/codes"
 
 	"github.com/yomorun/yomo-source-mqtt-broker-starter/pkg/starter"
 )

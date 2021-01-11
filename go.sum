@@ -45,6 +45,7 @@ github.com/bradfitz/go-smtpd v0.0.0-20170404230938-deb6d6237625/go.mod h1:HYsPBT
 github.com/buger/jsonparser v0.0.0-20181115193947-bf1c66bbce23/go.mod h1:bbYlZJ7hK1yFx9hf58LP0zeX7UjIGs20ufpu3evjr+s=
 github.com/cenkalti/backoff/v4 v4.0.0 h1:6VeaLF9aI+MAUQ95106HwWzYZgJJpZ4stumjj6RFYAU=
 github.com/cenkalti/backoff/v4 v4.0.0/go.mod h1:eEew/i+1Q6OrCDZh3WiXYv3+nJwBASZ8Bog/87DQnVg=
+github.com/cenkalti/backoff/v4 v4.1.0/go.mod h1:scbssz8iZGpm3xbr14ovlUdkxfGXNInqkPWOWmG2CLw=
 github.com/cespare/xxhash v1.1.0/go.mod h1:XrSqR1VqqWfGrhpAt58auRo0WTKS1nRRg3ghfAqPWnc=
 github.com/cheekybits/genny v1.0.0 h1:uGGa4nei+j20rOSeDeP5Of12XVm7TGUd4dJA9RDitfE=
 github.com/cheekybits/genny v1.0.0/go.mod h1:+tQajlRqAUrPI7DOSpB0XAqZYtQakVtB7wXkRAgjxjQ=
@@ -319,11 +320,12 @@ github.com/viant/toolbox v0.24.0/go.mod h1:OxMCG57V0PXuIP2HNQrtJf2CjqdmbrOx5EkMI
 github.com/xdg/scram v0.0.0-20180814205039-7eeb5667e42c/go.mod h1:lB8K/P019DLNhemzwFU4jHLhdvlE6uDZjXFejJXr49I=
 github.com/xdg/stringprep v1.0.0/go.mod h1:Jhud4/sHMO4oL310DaZAKk9ZaJ08SJfe+sJh0HrGL1Y=
 github.com/xiang90/probing v0.0.0-20190116061207-43a291ad63a2/go.mod h1:UETIi67q53MR2AWcXfiuqkDkRtnGDLqkBTpCHuJHxtU=
+github.com/yomorun/y3-codec-golang v1.5.0 h1:pd/D2o7GlhhIn0YSEADGaviID/fwUbiopGH+PWImwbw=
+github.com/yomorun/y3-codec-golang v1.5.0/go.mod h1:J9eZeyLeoAnmghuPBVzy1OVkhz3oj9kcTKTgVWILa9Q=
 github.com/yomorun/yomo v0.5.2 h1:q00GfWMcrgpueLOYkvdFNyeCdKXfb5KDgBRKnvPOENY=
 github.com/yomorun/yomo v0.5.2/go.mod h1:S+vMrXVFa/DV8Z5kjj0P3A9sdeRv0IoEr6jRoy0wEJg=
-github.com/yomorun/yomo-codec-golang v0.2.1/go.mod h1:r/611MRnZbd31sd9wNzoDKxYy4Tnt8WHnC4iDTAW3NY=
-github.com/yomorun/yomo-codec-golang v1.2.0 h1:/b9b3jkeyoSeHrE3ElzEi3v/zmkIlP1R6KngAnpLXIc=
-github.com/yomorun/yomo-codec-golang v1.2.0/go.mod h1:jxcwjw+UU1l9W4yMgGkVyFvLyLqcjFZ88AZLBxyr5O4=
+github.com/yomorun/yomo v0.7.1 h1:oj1FNVTBus6RWYlUkODmTI7UNdw9xUWM+453863o/64=
+github.com/yomorun/yomo v0.7.1/go.mod h1:f/Xl+xBWd4AakRrOXRmWcJQ4yfC6zPKpxCxm1pmNV04=
 go.etcd.io/bbolt v1.3.2/go.mod h1:IbVyRI1SCnLcuJnV2u8VeU0CEYM7e686BmAb1XKL+uU=
 go.opencensus.io v0.18.0/go.mod h1:vKdFvxhtzZ9onBp9VKHK8z/sRpBMnKAsufL7wlDrCOA=
 go.opencensus.io v0.21.0/go.mod h1:mSImk1erAIZhrmZN+AvHh14ztQfjbGwt4TtuofqLduU=
