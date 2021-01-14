@@ -92,7 +92,7 @@ func (b Broker) connSub(conf *BrokerConf, messageSubHandler mqtt.MessageHandler)
 	options.SetKeepAlive(time.Duration(20) * time.Second)
 	options.SetMaxReconnectInterval(time.Duration(5) * time.Second)
 	options.SetConnectionLostHandler(func(c mqtt.Client, err_ error) {
-		doSub(client, conf.multipleTopics(), messageSubHandler)
+		doSub(client, conf.multipleTopics(conf.MultipleTopicQoS), messageSubHandler)
 	})
 	options.SetOnConnectHandler(func(c mqtt.Client) {
 		log.Printf("[client connect state] IsConnected:%v, IsConnectionOpen:%v", c.IsConnected(), c.IsConnectionOpen())
@@ -100,7 +100,7 @@ func (b Broker) connSub(conf *BrokerConf, messageSubHandler mqtt.MessageHandler)
 
 	client = mqtt.NewClient(options)
 	doConn(client)
-	doSub(client, conf.multipleTopics(), messageSubHandler)
+	doSub(client, conf.multipleTopics(conf.MultipleTopicQoS), messageSubHandler)
 }
 
 func doConn(client mqtt.Client) {

@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"github.com/yomorun/yomo-source-mqtt-broker-starter/internal/env"
 	"log"
 
 	"github.com/yomorun/yomo/pkg/quic"
@@ -13,8 +14,13 @@ import (
 	"github.com/yomorun/yomo-source-mqtt-broker-starter/pkg/starter"
 )
 
+var (
+	zipperAddr = env.GetString("YOMO_SOURCE_MQTT_ZIPPER_ADDR", "localhost:9999")
+	brokerAddr = env.GetString("YOMO_SOURCE_MQTT_BROKER_ADDR", "localhost:1883")
+)
+
 func main() {
-	client, err := quic.NewClient("localhost:9999")
+	client, err := quic.NewClient(zipperAddr)
 	if err != nil {
 		panic(fmt.Errorf("NewClient error:%s", err.Error()))
 	}
@@ -24,7 +30,7 @@ func main() {
 		panic(fmt.Errorf("CreateStream error:%s", err.Error()))
 	}
 
-	starter.NewBrokerSimply("localhost:1883", "NOISE").
+	starter.NewBrokerSimply(brokerAddr, "NOISE").
 		Run(func(topic string, payload []byte) {
 			log.Printf("topic=%v, payload=%v\n", topic, string(payload))
 
