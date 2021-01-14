@@ -2,7 +2,7 @@ package starter
 
 import (
 	"fmt"
-	"github.com/yomorun/yomo-source-mqtt-broker-starter/internal/env"
+	"github.com/yomorun/yomo-source-mqtt-broker-starter/pkg/env"
 	"time"
 )
 
