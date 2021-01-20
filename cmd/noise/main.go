@@ -3,13 +3,15 @@ package main
 import (
 	"context"
 	"encoding/json"
-	"github.com/yomorun/yomo-source-mqtt-broker-starter/pkg/env"
 	"log"
 	"sync"
 
-	"github.com/yomorun/yomo/pkg/quic"
+	"github.com/yomorun/y3-codec-golang"
+	"github.com/yomorun/yomo-source-mqtt-broker-starter/internal/utils"
 
-	"github.com/yomorun/y3-codec-golang/pkg/codes"
+	"github.com/yomorun/yomo-source-mqtt-broker-starter/pkg/env"
+
+	"github.com/yomorun/yomo/pkg/quic"
 
 	"github.com/yomorun/yomo-source-mqtt-broker-starter/pkg/starter"
 )
@@ -18,6 +20,12 @@ var (
 	zipperAddr = env.GetString("YOMO_SOURCE_MQTT_ZIPPER_ADDR", "localhost:9999")
 	brokerAddr = env.GetString("YOMO_SOURCE_MQTT_BROKER_ADDR", "0.0.0.0:1883")
 )
+
+type NoiseData struct {
+	Noise float32 `yomo:"0x11"` // 产生的噪音值
+	Time  int64   `yomo:"0x12"` // 产生噪音值的时间(ms)
+	From  string  `yomo:"0x13"` // 来源标识(IP)
+}
 
 func main() {
 	var (
@@ -36,10 +44,10 @@ func main() {
 				log.Printf("Unmarshal payload error:%v", err)
 			}
 
-			// generate YoMo-Codec format
-			data := float32(raw["noise"])
-			proto := codes.NewProtoCodec(0x10)
-			sendingBuf, _ := proto.Marshal(data)
+			// generate y3-codec format
+			noise := float32(raw["noise"])
+			data := NoiseData{Noise: noise, Time: utils.Now(), From: utils.IpAddr()}
+			sendingBuf, _ := y3.NewCodec(0x10).Marshal(data)
 
 			mutex.Lock()
 			_, err = stream.Write(sendingBuf)
@@ -53,7 +61,7 @@ func main() {
 			}
 			mutex.Unlock()
 
-			log.Printf("write: sendingBuf=%#x\n", sendingBuf)
+			log.Printf("write: sendingBuf=%v\n", utils.FormatBytes(sendingBuf))
 		})
 }
 
