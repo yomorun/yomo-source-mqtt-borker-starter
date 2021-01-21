@@ -25,12 +25,17 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/yomorun/yomo/pkg/quic"
-
-	"github.com/yomorun/y3-codec-golang/pkg/codes"
+	"github.com/yomorun/y3-codec-golang"
 
 	"github.com/yomorun/yomo-source-mqtt-broker-starter/pkg/starter"
+	"github.com/yomorun/yomo/pkg/quic"
 )
+
+type NoiseData struct {
+	Noise float32 `yomo:"0x11"` // Noise value
+	Time  int64   `yomo:"0x12"` // Timestamp (ms)
+	From  string  `yomo:"0x13"` // Source IP
+}
 
 func main() {
 	client, err := quic.NewClient("localhost:9999")
@@ -54,10 +59,10 @@ func main() {
 				log.Printf("Unmarshal payload error:%v", err)
 			}
 
-			// generate YoMo-Codec format
-			data := float32(raw["noise"])
-			proto := codes.NewProtoCodec(0x10)
-			sendingBuf, _ := proto.Marshal(data)
+			// generate Y3-Codec format
+			noise := float32(raw["noise"])
+			data := NoiseData{Noise: noise, Time: 1611213247509, From: "192.168.1.1"}
+			sendingBuf, _ := y3.NewCodec(0x10).Marshal(data)
 			log.Printf("sendingBuf=%#x\n", sendingBuf)
 
 			_, err = stream.Write(sendingBuf)
@@ -92,8 +97,14 @@ import (
 	"io"
 	"log"
 
-	"github.com/yomorun/y3-codec-golang/pkg/codes"
+	"github.com/yomorun/y3-codec-golang"
 )
+
+type NoiseData struct {
+	Noise float32 `yomo:"0x11"` // Noise value
+	Time  int64   `yomo:"0x12"` // Timestamp (ms)
+	From  string  `yomo:"0x13"` // Source IP
+}
 
 func Handler(topic string, payload []byte, writer io.Writer) {
 	log.Printf("topic=%v, payload=%v\n", topic, string(payload))
@@ -105,10 +116,10 @@ func Handler(topic string, payload []byte, writer io.Writer) {
 		log.Printf("Unmarshal payload error:%v", err)
 	}
 
-	// generate YoMo-Codec format
-	data := float32(raw["noise"])
-	proto := codes.NewProtoCodec(0x10)
-	sendingBuf, _ := proto.Marshal(data)
+	// generate Y3-Codec format
+	noise := float32(raw["noise"])
+	data := NoiseData{Noise: noise, Time: 1611213247509, From: "192.168.1.1"}
+	sendingBuf, _ := y3.NewCodec(0x10).Marshal(data)
 	log.Printf("sendingBuf=%#x\n", sendingBuf)
 
 	_, err = writer.Write(sendingBuf)
