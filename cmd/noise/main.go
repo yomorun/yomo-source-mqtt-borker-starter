@@ -7,7 +7,7 @@ import (
 	"sync"
 
 	"github.com/yomorun/y3-codec-golang"
-	"github.com/yomorun/yomo-source-mqtt-broker-starter/internal/utils"
+	"github.com/yomorun/yomo-source-mqtt-broker-starter/pkg/utils"
 
 	"github.com/yomorun/yomo-source-mqtt-broker-starter/pkg/env"
 
@@ -22,9 +22,9 @@ var (
 )
 
 type NoiseData struct {
-	Noise float32 `yomo:"0x11"` // 产生的噪音值
-	Time  int64   `yomo:"0x12"` // 产生噪音值的时间(ms)
-	From  string  `yomo:"0x13"` // 来源标识(IP)
+	Noise float32 `yomo:"0x11"` // Noise value
+	Time  int64   `yomo:"0x12"` // Timestamp (ms)
+	From  string  `yomo:"0x13"` // Source IP
 }
 
 func main() {
