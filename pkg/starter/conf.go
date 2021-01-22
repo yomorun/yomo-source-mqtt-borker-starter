@@ -2,17 +2,16 @@ package starter
 
 import (
 	"fmt"
-	"github.com/yomorun/yomo-source-mqtt-broker-starter/pkg/env"
 	"time"
 )
 
 type BrokerConf struct {
-	Addr           string
-	Topics         []string
-	Username       string
-	Password       string
-	ConnectTimeout int
-	FailureTimes   int
+	Addr             string
+	Topics           []string
+	Username         string
+	Password         string
+	ConnectTimeout   int
+	FailureTimes     int
 	MultipleTopicQoS byte
 }
 
@@ -29,11 +28,11 @@ func (c BrokerConf) multipleTopics(qos byte) map[string]byte {
 }
 
 var DefaultConfig = &BrokerConf{
-	Addr:           "localhost:1883",
-	Topics:         []string{"NOISE"},
-	Username:       "admin",
-	Password:       "public",
-	ConnectTimeout: 0,
-	FailureTimes:   5,
-	MultipleTopicQoS : byte(env.GetInt("YOMO_SOURCE_MQTT_MULTIPLE_TOPIC_QOS", 1)),
+	Addr:             "localhost:1883",
+	Topics:           []string{"NOISE"},
+	Username:         "admin",
+	Password:         "public",
+	ConnectTimeout:   0,
+	FailureTimes:     5,
+	MultipleTopicQoS: 1,
 }

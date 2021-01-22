@@ -8,6 +8,8 @@ import (
 	"sync"
 	"time"
 
+	"github.com/yomorun/yomo-source-mqtt-broker-starter/pkg/env"
+
 	"github.com/fhmq/hmq/broker"
 
 	mqtt "github.com/eclipse/paho.mqtt.golang"
@@ -54,8 +56,11 @@ func (b Broker) Sub(handle func(topic string, payload []byte)) {
 
 func NewBrokerSimply(addr string, topic string) Broker {
 	return NewBroker(&BrokerConf{
-		Addr:   addr,
-		Topics: []string{topic},
+		Addr:             addr,
+		Topics:           []string{topic},
+		ConnectTimeout:   0,
+		FailureTimes:     0,
+		MultipleTopicQoS: byte(env.GetInt("YOMO_SOURCE_MQTT_MULTIPLE_TOPIC_QOS", 1)),
 	})
 }
 
