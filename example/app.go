@@ -5,7 +5,7 @@ import (
 	"io"
 	"log"
 
-	"github.com/yomorun/y3-codec-golang/pkg/codes"
+	"github.com/yomorun/y3-codec-golang"
 )
 
 func Handler(topic string, payload []byte, writer io.Writer) {
@@ -20,8 +20,8 @@ func Handler(topic string, payload []byte, writer io.Writer) {
 
 	// generate YoMo-Codec format
 	data := float32(raw["noise"])
-	proto := codes.NewProtoCodec(0x10)
-	sendingBuf, _ := proto.Marshal(data)
+	codec := y3.NewCodec(0x10)
+	sendingBuf, _ := codec.Marshal(data)
 	log.Printf("sendingBuf=%#x\n", sendingBuf)
 
 	_, err = writer.Write(sendingBuf)
