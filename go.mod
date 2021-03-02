@@ -9,3 +9,6 @@ require (
 	github.com/yomorun/y3-codec-golang v1.6.6
 	github.com/yomorun/yomo v1.0.0
 )
+
+// replace github.com/fhmq/hmq v0.0.0-20201202020546-6be79cbe88e6 => ../../chenjunbiao/hmq
+
