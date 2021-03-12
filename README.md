@@ -76,6 +76,8 @@ func main() {
 go run app.go
 ```
 
+**Note**: This example already has a built-in MQTT Broker service (e.g., localhost:1883), so you don't need to build it separately.
+
 ### Example (using cli: yomo-mqtt)
 
 Running the application through the CLI
@@ -137,3 +139,6 @@ go mod init test && go get
 - -p Port is the port number of MQTT host for Source function (default is 6262)
 - -z Endpoint of ZipperAddr Server (default is localhost:4242)
 - -t Topic of MQTT (default is NOISE)
+
+**Note**: This example already has a built-in MQTT Broker service (e.g., localhost:1883), so you don't need to build it separately.
+
